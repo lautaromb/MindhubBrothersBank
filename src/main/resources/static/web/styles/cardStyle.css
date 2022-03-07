@@ -1,0 +1,217 @@
+/* #container{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+} */
+
+.cardContainer {
+}
+
+.cardShow {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+}
+
+.creditCard {
+  width: 35rem;
+  height: 20rem;
+  margin: 0 auto;
+  background-color: pink;
+  border-radius: 1rem;
+}
+
+.cardPin {
+  width: 4rem;
+  height: 2.5rem;
+  margin: 0 auto;
+  margin-left: 1.5rem;
+  background-color: gold;
+  border: 2px solid rgb(189, 161, 2);
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-right: 5.3rem;
+}
+
+.bankTitle {
+  width: 30rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.logoAndBank {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+}
+
+.cardNumber {
+  margin-top: -0.7rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cardData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.validThru {
+  margin: 0.3rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.cardholder {
+  font-size: 1.4rem;
+}
+
+.SILVER {
+  width: 35rem;
+  height: 20rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(72, 85, 89, 1) 0%,
+    rgba(148, 166, 198, 1) 28%,
+    rgba(177, 182, 191, 1) 62%,
+    rgba(177, 197, 222, 1) 100%
+  );
+}
+
+.GOLD {
+  width: 35rem;
+  height: 20rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background: radial-gradient(
+    circle,
+    rgba(255, 224, 129, 1) 0%,
+    rgba(226, 204, 77, 1) 44%,
+    rgba(224, 160, 7, 1) 100%
+  );
+}
+
+.TITANIUM {
+  color: white;
+  width: 35rem;
+  height: 20rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background: linear-gradient(
+    0deg,
+    rgba(149, 163, 186, 1) 0%,
+    rgba(135, 136, 136, 1) 50%,
+    rgba(97, 106, 143, 1) 100%
+  );
+}
+
+.imgVisa {
+  width: 5rem;
+  margin-right: -24rem;
+  margin-top: -5rem;
+}
+
+.holo {
+  background: linear-gradient(
+    270deg,
+    #ec1414,
+    #eccb14,
+    #14ec1c,
+    #14eaec,
+    #1914ec,
+    #ec14da
+  );
+  background-size: 1200% 1200%;
+  -webkit-animation: Logo 4s ease infinite;
+  -moz-animation: Logo 4s ease infinite;
+  -o-animation: Logo 4s ease infinite;
+  animation: Logo 4s ease infinite;
+  display: block;
+  height: 2rem;
+  width: 3rem;
+  padding-right: 0.5rem;
+  z-index: 0;
+  border-radius: 55px;
+  top: 140px;
+  left: 530px;
+}
+@-webkit-keyframes Logo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Logo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes Logo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Logo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.holo-back {
+  top: 140px;
+  left: 530px;
+  /* top: 300px; */
+  height: 2rem;
+  width: 3rem;
+  padding-right: 0.5rem;
+  z-index: 22;
+  background-repeat: no-repeat;
+  /* background-image: url('http://jamesdelaney.ie/dev/hologram.png'); */
+  background-position: 50% 50%;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 560px) {
+  #container {
+    position: relative;
+    width: 25%;
+    height: 10%;
+    margin-left: 1rem;
+    margin-top: 15.3rem;
+  }
+
+  footer {
+    display: none;
+  }
+}

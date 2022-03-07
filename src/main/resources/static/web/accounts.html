@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/web/styles/style.css">
+</head>
+
+<body>
+
+    <div id="app2">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+                <div class="container-fluid" style="width: 85%;" id="container-fluid">
+                    <div class="bankLogo">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank"
+                            width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <line x1="3" y1="21" x2="21" y2="21" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                            <polyline points="5 6 12 3 19 6" />
+                            <line x1="4" y1="10" x2="4" y2="21" />
+                            <line x1="20" y1="10" x2="20" y2="21" />
+                            <line x1="8" y1="14" x2="8" y2="17" />
+                            <line x1="12" y1="14" x2="12" y2="17" />
+                            <line x1="16" y1="14" x2="16" y2="17" />
+                        </svg>
+                    </div>
+                    <div style="margin-left: 1.5rem;">
+                        <a class="navbar-brand" href="/web/home.html">Mindhub Brothers Bank</a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation" id="navToggler">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="    justify-content: flex-end">
+                        <div class="navbar-nav" id="navbar-nav">
+
+                            <a class="nav-link" href="/web/cards.html">Cards</a>
+                            <a class="nav-link" href="/web/transfers.html">Transfer</a>
+                            <button @click="logout()" class="btn btn-primary buttonCss"> Log out</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+
+        <div class="container" id="container">
+
+
+            <div class="cardsHome1row">
+                <div class="row align-items-center" style="display: flex;">
+
+                    <div class="col mb-3 " id="accountOwner" style="margin-top: -16rem;">
+                        <div class="colCard">
+                            <div class="card" style="width: 100%; margin-top: 30%;">
+                                <div class="ClientIni">
+                                    <h2 v-cloak>{{initials}}</h2>
+                                </div>
+                                <div class="card-body" style="margin-top: -7rem;">
+                                    <h5 class="card-title" v-cloak>{{client.firstName}} {{client.lastName}}</h5>
+                                    <p class="card-text" v-cloak> Email:{{client.email}}</p>
+                                </div>
+                                <div v-show="accountsLength < 3" v-cloak>
+                                    <button @click="createNewAccount()" class="btn btn-primary">Create new
+                                        Acccount</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-3 ">
+                        <div v-for="accounts in account" v-show="accounts.active == true">
+                            <div class="colCard" id="colCard">
+                                <div class="card-body" v-cloak>
+                                    <h5 class="card-title" v-cloak>Account: {{accounts.number}}</h5>
+                                    <p class="card-text text-white bg-success" v-cloak
+                                        style="width: 14rem; padding: .3rem; text-align: center; border-radius: 2rem;">
+                                        Balance: $
+                                        {{accounts.balance}}
+                                    </p>
+                                    <p class="card-text" v-cloak>Creation Date:
+                                        {{accounts.creationDate.substring(0,10)}}
+                                        <!-- <p class="card-text" v-cloak>Creation Date: {{dates(accounts)}} -->
+                                    </p>
+                                    <p class="card-text" v-cloak>Account type: {{accounts.accountType}}
+                                        <button v-show="accounts.accountType == 'CURRENT'"
+                                            class="buttonCss  btn btn-primary"
+                                            @click="changeAccountType(accounts.id)">Change to Saving</button>
+                                        <button v-show="accounts.accountType !== 'CURRENT'"
+                                            class="buttonCss  btn btn-primary"
+                                            @click="changeAccountType(accounts.id)">Change to Current</button>
+                                    </p>
+                                    <a class="seeTransactions" v-bind:href="`account.html?id=${accounts.id}`"
+                                        v-cloak>See
+                                        transactions</a>
+
+                                    <button v-show="accounts.balance == 0" class="buttonCss btn btn-primary"
+                                        @click="deleteAccount(accounts.id)" v-cloak>
+                                        Delete Account
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- accordion -->
+                    <div class="accordion accordion-flush" id="accordionFlushExample" v-for="accounts in account"
+                        v-show="accounts.active == true">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" :id="'flush'+accounts.id">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    :data-bs-target="'#' + accounts.id" aria-expanded="false"
+                                    :aria-controls="accounts.id">
+                                    {{accounts.number}}
+                                </button>
+                            </h2>
+                            <div :id="accounts.id" class="accordion-collapse collapse" :aria-labelledby="'flush'+accounts.id"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                    accordion body.</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              Accordion Item #1
+                            </button>
+                          </h2>
+                          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                          </div>
+                        </div>
+    
+                      </div>
+
+
+                </div>
+            </div>
+
+            <div class="cardsHome1row" id="loans">
+                <div>
+                    <button class="btn btn-primary buttonCss" @click="applyForLoan()" style="margin-left: 1.2rem;">Apply
+                        for a Loan</button>
+                </div>
+                <div v-if="loans == 0">
+                    <h2 style="text-align: center;"> No loans accredited</h2>
+                </div>
+                <div class="col mb-3 " v-else>
+                    <h2 style="text-align: center;">Loans</h2>
+                    <div v-for="(accounts, index) in client.loans" :key="index">
+                        <div class="colCard" style="width: 70%; margin: 0 auto; margin-bottom: 1rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" v-cloak>Credit: {{client.loans[index].name}}</h5>
+                                <p class="card-text text-white bg-success" v-cloak
+                                    style="width: 14rem; padding: .3rem; text-align: center; border-radius: 2rem;">
+                                    Amount: $ {{client.loans[index].amount}}
+                                </p>
+                                <p class="card-text" v-cloak>Payments: {{client.loans[index].payments}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div>
+                <div class="downloadApp">
+                    <div style="text-align: center;">
+                        <h4>Download the app</h4>
+                    </div>
+                    <div>
+                        <span id="GooglePlay">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-brand-google-play" width="44" height="44"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M4 3.71v16.58a0.7 .7 0 0 0 1.05 .606l14.622 -8.42a0.55 .55 0 0 0 0 -.953l-14.622 -8.419a0.7 .7 0 0 0 -1.05 .607z" />
+                                <line x1="15" y1="9" x2="4.5" y2="20.5" />
+                                <line x1="4.5" y1="3.5" x2="15" y2="15" />
+                            </svg>
+                            <a href="https://play.google.com/" target="_blank"><span>Google</span> play</a>
+                        </span>
+                        <span id="AppStore">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-apple"
+                                width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M9 7c-3 0 -4 3 -4 5.5c0 3 2 7.5 4 7.5c1.088 -.046 1.679 -.5 3 -.5c1.312 0 1.5 .5 3 .5s4 -3 4 -5c-.028 -.01 -2.472 -.403 -2.5 -3c-.019 -2.17 2.416 -2.954 2.5 -3c-1.023 -1.492 -2.951 -1.963 -3.5 -2c-1.433 -.111 -2.83 1 -3.5 1c-.68 0 -1.9 -1 -3 -1z" />
+                                <path d="M12 4a2 2 0 0 0 2 -2a2 2 0 0 0 -2 2" />
+                            </svg>
+                            <a href="https://www.apple.com/app-store/" target="_blank">App Store</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="footerSub1">
+                    <div>
+                        <p> © 2022, MHB Bank, All Rights Reserved</p>
+                    </div>
+                    <div class="items">
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com" target="_blank"><svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                                    </svg></a>
+                            </li>
+                            <li>
+                                <a href="https://www.twitter.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                        <line x1="8" y1="11" x2="8" y2="16" />
+                                        <line x1="8" y1="8" x2="8" y2="8.01" />
+                                        <line x1="12" y1="16" x2="12" y2="11" />
+                                        <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-brand-youtube" width="44" height="44"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <rect x="3" y="5" width="18" height="14" rx="4" />
+                                        <path d="M10 9l5 3l-5 3z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <rect x="4" y="4" width="16" height="16" rx="4" />
+                                        <circle cx="12" cy="12" r="3" />
+                                        <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/web/js/accounts.js"></script>
+
+</body>
+
+</html>
