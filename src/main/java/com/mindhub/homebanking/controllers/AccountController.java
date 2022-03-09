@@ -8,6 +8,8 @@ import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountServices;
+import com.mindhub.homebanking.services.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,11 @@ public class AccountController {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientServices clientServices;
+    @Autowired
+    private AccountServices accountServices;
+
 //    @GetMapping("/clients/current/accounts")
 //    public List<AccountDTO> getAccountsDTO(){
 //        return accountRepository.findAll().stream().map(AccountDTO::new).collect(toList());
@@ -41,8 +48,10 @@ public class AccountController {
 
     @GetMapping("/clients/current/accounts/{id}")
     public List<AccountDTO>  getAccountDTO(@PathVariable Long id, Authentication authentication){
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account account = accountRepository.findById(id).orElse(null);
+//        Client client = clientRepository.findByEmail(authentication.getName());
+//        Account account = accountRepository.findById(id).orElse(null);
+        Client client = clientServices.findClientByEmail(authentication.getName());
+        Account account = accountServices.findById(id);
 
         List<Account> filterAccount = client.getAccounts().stream().filter(account1 -> account1.getId() == id).collect(toList());
 

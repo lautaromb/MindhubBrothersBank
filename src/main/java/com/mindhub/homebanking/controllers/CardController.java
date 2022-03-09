@@ -27,11 +27,6 @@ import static java.util.stream.Collectors.toList;
 @RestController
 public class CardController {
 
-//    @Autowired
-//    private CardRepository cardRepository;
-//    @Autowired
-//    private ClientRepository clientRepository;
-
     @Autowired
     private ClientServices clientServices;
     @Autowired
@@ -95,7 +90,9 @@ public class CardController {
     @PatchMapping("/clients/current/cards/delete/{id}")
     public ResponseEntity<Object> smartDelete(@PathVariable Long id){
 //       Card card = cardRepository.findById(id).orElse(null);
-        Card card = cardServices.getCardById(id);
+        Card card = cardServices.getCardById(id
+
+        );
        card.setGood(false);
        cardServices.saveCard(card);
        return new ResponseEntity<>("Set Good: false", HttpStatus.CREATED);

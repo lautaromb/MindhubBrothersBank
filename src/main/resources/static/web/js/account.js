@@ -18,7 +18,7 @@ var app3 = new Vue({
       const myParam = urlParams.get("id");
       console.log(urlParams)
       axios
-        .get(`http://localhost:8080/api/clients/current/accounts/${myParam}`)
+        .get(`/api/clients/current/accounts/${myParam}`)
         .then((response) => {
           console.log(response);
           this.account = response.data;

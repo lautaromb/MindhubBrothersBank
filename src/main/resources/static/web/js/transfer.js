@@ -17,7 +17,7 @@ var appTransfer = new Vue({
       loadData: function(){
       
         axios
-        .get(`http://localhost:8080/api/clients/current/accounts`)
+        .get(`/api/clients/current/accounts`)
         .then((response) => {
           console.log(response);
           this.account = response.data;

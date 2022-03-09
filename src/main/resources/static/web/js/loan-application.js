@@ -36,7 +36,7 @@ var app2 = new Vue({
       var myParam = urlParams.get("id");
 
       axios
-        .get(`http://localhost:8080/api/clients/current`)
+        .get(`/api/clients/current`)
         .then((response) => {
           console.log(response);
           this.client = response.data;
@@ -48,13 +48,13 @@ var app2 = new Vue({
     },
     
     loadAccount:function(){
-      axios.get(`http://localhost:8080/api/clients/current/accounts/`)
+      axios.get(`/api/clients/current/accounts/`)
       .then(response => {
         this.accounts = response.data
       })
     },
     seeLoansData() {
-      axios.get("http://localhost:8080/api/loans").then((response) => {
+      axios.get("/api/loans").then((response) => {
         this.loansInfo = response.data;
         this.mortgageLoanPayments = this.loansInfo[0];
         this.personalLoanPayments = this.loansInfo[1];

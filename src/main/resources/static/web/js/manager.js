@@ -37,7 +37,7 @@ var app = new Vue({
     },
     postClient: function () {
       axios
-        .post("http://localhost:8080/rest/clients", {
+        .post("/rest/clients", {
           firstName: this.newClient.firstName,
           lastName: this.newClient.lastName,
           email: this.newClient.email,
@@ -53,7 +53,7 @@ var app = new Vue({
     },
     loadData: function () {
       axios
-        .get("http://localhost:8080/rest/clients")
+        .get("/rest/clients")
         .then((response) => {
           this.jsons = response.data;
           this.users = response.data._embedded.clients;

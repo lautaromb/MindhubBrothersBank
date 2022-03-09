@@ -24,7 +24,7 @@ var app4 = new Vue({
   methods: {
     loadData() {
       axios
-        .get("http://localhost:8080/api/clients/current")
+        .get("/api/clients/current")
         .then((response) => {
           this.client = response.data;
         })
@@ -56,7 +56,7 @@ var app4 = new Vue({
     this.arg = this.arg + 1;
   },
   deleteCard(id){
-    axios.patch(`http://localhost:8080/api/clients/current/cards/delete/`+id)
+    axios.patch(`/api/clients/current/cards/delete/`+id)
     .then(response =>{
       return window.location.reload()
     })

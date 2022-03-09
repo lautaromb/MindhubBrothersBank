@@ -15,7 +15,7 @@ var app4 = new Vue({
   methods: {
     loadData() {
       axios
-        .get("http://localhost:8080/api/clients/current")
+        .get("/api/clients/current")
         .then((response) => {
           this.client = response.data;
           this.cards = this.client.cards;

@@ -26,18 +26,10 @@ import java.util.List;
 @RestController
 public class ClientController {
 
-//    @Autowired
-//    private ClientRepository clientRepository;
-
-//    @Autowired
-//    private AccountRepository accountRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private ClientServices clientServices;
-
     @Autowired
     private AccountServices accountServices;
 
