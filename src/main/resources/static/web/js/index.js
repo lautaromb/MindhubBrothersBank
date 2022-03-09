@@ -27,6 +27,28 @@ var appIndex = new Vue({
       console.log(`Hola ${this.email} ${this.password}`);
     },
     signup() {
+
+      // if(this.firstName.length() < 1){
+      //   swal("Error", "First name to short", "error")  
+      // }
+      // if(this.lastName.length() < 1){
+      //   swal("Error", "Last name to short", "error")  
+      // }
+
+      if(this.password.length < 5){
+        swal("Error", "Password must be 6 characters long", "error")  
+      }
+
+      if(this.email.length == ""){
+        swal("Error", "Please add an email", "error")  
+      }
+
+      if( !this.email.includes("@" && ".com")) {
+        
+        swal("Error", "Typo in email", "error")  
+      }else{
+        if(this.email.length > 6 ){
+        
       axios
         .post(
           "/api/clients",
@@ -38,7 +60,11 @@ var appIndex = new Vue({
           swal("Good job!", "User registered", "success");
           this.login();
 
-        });
+        });}else{
+          swal("Error", "Email adress not supported", "error")
+        }
+      
+      }
     },
     logout(){
       axios.post('/api/logout')
