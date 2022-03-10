@@ -8,6 +8,10 @@ var app4 = new Vue({
   data: {
     client: {},
     cards: [],
+    goodCards:[],
+    badCards:[],
+    goodCardsLength:0,
+    badCardsLength:0,
     cardType:"",
     cardColor:"",
     date: new Date(),
@@ -21,6 +25,9 @@ var app4 = new Vue({
     this.loadData();
     this.dates(this.cards);
   },
+
+  
+
   methods: {
     loadData() {
       axios
@@ -30,7 +37,15 @@ var app4 = new Vue({
         })
         .then(() => {
           this.cards = this.client.cards;
+          this.badCards = this.cards.filter(card => card.good == false)
+          this.goodCards = this.cards.filter(card => card.good == true)
+          this.goodCardsLength = this.goodCards.length;
+          this.badCardsLength = this.badCards.length;
         });
+
+      
+
+        
     },
     dates(cardThruDate) {
       let day = parseInt(cardThruDate.slice(5, 7));

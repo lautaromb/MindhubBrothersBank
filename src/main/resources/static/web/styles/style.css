@@ -36,6 +36,12 @@ h1 {
   margin: 2rem 0;
 }
 
+.navbar-light .navbar-nav .nav-link{
+  display: flex;
+  align-items: center;
+}
+
+
 
 /*home*/
 #navbarHome {
@@ -118,6 +124,7 @@ h1 {
   justify-content: center;
 }
 
+
 #app,
 #app2,
 #app3,
@@ -149,10 +156,25 @@ h1 {
 #indexForm button,
 .showCardsSmall button,
 .showCards button,
+.showDeleteCards button,
 #transferForm button {
   border-radius: 25px;
   color: rgb(29, 91, 223);
   background-color: white;
+}
+
+#transferForm{
+  font-weight: bold;
+
+  width: 70%;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    rgba(55, 153, 226, 1) 0%,
+    rgba(96, 212, 146, 1) 51%,
+    rgba(136, 236, 95, 1) 100%
+  );
+  border-radius: 15px 30px;
 }
 
 #indexForm img {
@@ -270,10 +292,21 @@ pre {
   margin-top: 10.3rem;
 }
 
+#navbarNavAltMarkup{
+  justify-content: flex-end;
+}
 .createCardForm {
   display: flex;
   flex-direction: column;
-  width: 10rem;
+  width: 14rem;
+  background: linear-gradient(
+    90deg,
+    rgba(55, 153, 226, 1) 0%,
+    rgba(96, 212, 146, 1) 51%,
+    rgba(136, 236, 95, 1) 100%
+  );
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 30px 15px;
 }
 
 .cardShow {
@@ -338,19 +371,32 @@ pre {
   display: none;
 }
 
-.showCards p {
+.showCards p,
+.showDeleteCards p {
   margin-top: 0;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-evenly;
 }
 
-.showCards .col {
+.showCards .col,
+.showDeleteCards .col {
   width: 50%;
 }
 
 .cardShowSimple {
   display: none;
+}
+
+.deleteCardsContainer{
+  height: fit-content;
+  background: linear-gradient(
+    90deg,
+    rgb(226, 61, 55) 0%,
+    rgb(212, 148, 96) 51%,
+    rgb(236, 95, 114) 100%
+  );
+  border-radius: 15px 30px;
 }
 
 /* trasnferForm */
