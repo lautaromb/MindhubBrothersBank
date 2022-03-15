@@ -36,6 +36,11 @@ var appTransfer = new Vue({
          console.log(response + "transaction complete")
          swal("Success", "Transaction complete", "success");
        })
+       .catch((response) => {  Swal.fire({ 
+          text: 'Transaction invalid', icon: 'error',showConfirmButton: false,timer: 3000 })
+            console.log(response);
+           });
+
     },
     applyForLoan(){
       return window.location.href = "/web/loan-application.html";

@@ -57,7 +57,9 @@ public class TransactionController {
         double balanceAccountSender = accountSender.getBalance();
         double balanceAccountReceiver = accountReceiver.getBalance();
 
-
+        if(amount <= 0 || description.isEmpty() || numberSend.isEmpty()){
+            return new ResponseEntity<>("Amount, description o destinations is invalid", HttpStatus.FORBIDDEN);
+        }
 
 
         if(accountSender.isActive() == false){
