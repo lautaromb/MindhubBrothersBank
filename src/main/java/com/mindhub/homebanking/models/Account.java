@@ -62,7 +62,6 @@ public class Account {
     public String getNumber() {
         return number;
     }
-
     public void setNumber(String number) {
         this.number = number;
     }
@@ -70,7 +69,6 @@ public class Account {
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
-
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
@@ -78,7 +76,6 @@ public class Account {
     public double getBalance() {
         return balance;
     }
-
     public void setBalance(double balance) {
         this.balance = balance;
     }
@@ -89,7 +86,6 @@ public class Account {
     public Client getClient() {
         return client;
     }
-
     public void setClient(Client client) {
         this.client = client;
     }
@@ -97,7 +93,6 @@ public class Account {
     public boolean isActive() {
         return active;
     }
-
     public void setActive(boolean active) {
         this.active = active;
     }
@@ -105,7 +100,6 @@ public class Account {
     public AccountType getAccountType() {
         return accountType;
     }
-
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
@@ -116,7 +110,6 @@ public class Account {
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
-
     public Set<Transaction> getTransactions() {
         return transactions;
     }

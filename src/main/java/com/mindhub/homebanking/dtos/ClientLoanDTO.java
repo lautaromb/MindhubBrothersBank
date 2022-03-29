@@ -28,7 +28,6 @@ public class ClientLoanDTO {
     public long getLoan_id() {
         return loan_id;
     }
-
     public void setLoan_id(long loan_id) {
         this.loan_id = loan_id;
     }
@@ -36,7 +35,6 @@ public class ClientLoanDTO {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -44,7 +42,6 @@ public class ClientLoanDTO {
     public Double getAmount() {
         return amount;
     }
-
     public void setAmount(Double amount) {
         this.amount = amount;
     }
@@ -52,7 +49,6 @@ public class ClientLoanDTO {
     public int getPayments() {
         return payments;
     }
-
     public void setPayments(int payments) {
         this.payments = payments;
     }

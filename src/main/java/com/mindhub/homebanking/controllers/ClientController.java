@@ -28,6 +28,7 @@ public class ClientController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private ClientServices clientServices;
     @Autowired
@@ -42,8 +43,6 @@ public class ClientController {
 
     @RequestMapping("clients/{id}")
     public ClientDTO getClient(@PathVariable Long id){
-//        ClientDTO client = new ClientDTO(clientRepository.findById(id).orElse(null));
-//        return client;
         return clientServices.findClientById(id);
     }
 

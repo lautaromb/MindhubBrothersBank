@@ -83,7 +83,10 @@ var app2 = new Vue({
         .then((response) => {
           console.log("success");
           return (window.location.href = "/web/accounts.html");
-        });
+        })
+        .catch((response) => {
+          alert("Amount can't be negative or zero" )
+        })
     },
     total(){
 

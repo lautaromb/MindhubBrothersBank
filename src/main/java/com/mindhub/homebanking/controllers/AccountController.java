@@ -30,7 +30,6 @@ public class AccountController {
 
     @Autowired
     private AccountRepository accountRepository;
-
     @Autowired
     private ClientRepository clientRepository;
 
@@ -43,7 +42,6 @@ public class AccountController {
 //    public List<AccountDTO> getAccountsDTO(){
 //        return accountRepository.findAll().stream().map(AccountDTO::new).collect(toList());
 //    };
-
 
 
     @GetMapping("/clients/current/accounts/{id}")
@@ -62,13 +60,6 @@ public class AccountController {
         return accountsDTO;
     }
 
-//    @GetMapping("/clients/current/accounts")
-//    public AccountDTO getAccountDTO(Authentication authentication){
-//        Client client = clientRepository.findByEmail(authentication.getName());
-//        AccountDTO accountDTO = new AccountDTO(accountRepository.findById(id).orElse(null));
-//
-//        return accountDTO;
-//    }
 
     @GetMapping("/clients/current/accounts/")
     public List<AccountDTO>  getAccounts(Authentication authentication){

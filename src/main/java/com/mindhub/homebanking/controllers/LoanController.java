@@ -58,6 +58,10 @@ public class LoanController {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
 
+        if(loanApplicationDTO.getAmount() <= 0){
+            return new ResponseEntity<>("Loan amount is incorrect", HttpStatus.FORBIDDEN);
+        }
+
 //       if(!loanApplicationDTO.getLoanName().equals("Mortgage")||!loanApplicationDTO.getLoanName().equals("Personal")||!loanApplicationDTO.getLoanName().equals("Automotive")){
 //           return new ResponseEntity<>("No loan match", HttpStatus.FORBIDDEN);
 //      }

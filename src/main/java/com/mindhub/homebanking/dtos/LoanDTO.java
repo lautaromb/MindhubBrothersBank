@@ -13,6 +13,8 @@ public class LoanDTO {
     private List<Integer> payments = new ArrayList<>();
     private double interest;
 
+
+
     public LoanDTO() {
     }
 
